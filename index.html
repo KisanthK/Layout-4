@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mulish:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0
+      }
+
+      :root {
+        --paper: #FAF8F4;
+        --paper2: #F3F0EA;
+        --paper3: #EAE5DB;
+        --ink: #1C2B1E;
+        --ink2: #3A4E3C;
+        --ink3: #7A9080;
+        --rose: #6A9E7A;
+        --rose-l: #A8CDB8;
+        --rose-w: #EEF6F1;
+        --line: #D0D8CE;
+        --fd: 'Italiana', Georgia, serif;
+        --fb: 'Mulish', sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth
+      }
+
+      body {
+        font-family: var(--fb);
+        background: var(--paper);
+        color: var(--ink);
+        font-weight: 300
+      }
+
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px 20px
+      }
+
+      .site {
+        background: var(--paper);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 40px rgba(28, 43, 30, .08)
+      }
+
+      /* ── NAV ── */
+      nav {
+        padding: 0 48px;
+        height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+        position: relative;
+        z-index: 10;
+      }
+
+      .logo {
+        font-family: var(--fd);
+        font-size: 22px;
+        color: var(--ink);
+        letter-spacing: 1px;
+        line-height: 1
+      }
+
+      .nl {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+        white-space: nowrap
+      }
+
+      .nl a {
+        font-size: 11px;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        text-decoration: none;
+        font-weight: 400;
+        transition: color .2s;
+      }
+
+      .nl a:hover {
+        color: var(--ink)
+      }
+
+      .na {
+        display: flex;
+        align-items: center;
+        gap: 18px
+      }
+
+      .nav-cart {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        transition: border-color .2s;
+      }
+
+      .nav-cart:hover {
+        border-color: var(--ink3)
+      }
+
+      .nav-cart svg {
+        width: 13px;
+        height: 13px;
+        stroke: var(--ink2);
+        fill: none;
+        stroke-width: 1.4
+      }
+
+      .nav-dot {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--rose);
+        border: 1.5px solid var(--paper);
+      }
+
+      .nav-btn {
+        font-family: var(--fb);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--paper);
+        background: var(--ink);
+        border: none;
+        padding: 9px 20px;
+        cursor: pointer;
+        transition: background .2s;
+      }
+
+      .nav-btn:hover {
+        background: var(--ink2)
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px
+      }
+
+      .hamburger span {
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: var(--ink)
+      }
+
+      .mob-menu {
+        display: none;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        padding: 8px 32px 16px;
+        flex-direction: column;
+        z-index: 100;
+      }
+
+      .mob-menu a {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        font-weight: 400;
+      }
+
+      .mob-menu a:last-child {
+        border-bottom: none
+      }
+
+      .mob-menu.open {
+        display: flex
+      }
+
+      /* ── HERO ── */
+      .hero {
+        display: grid;
+        grid-template-columns: 44% 56%;
+        min-height: 580px
+      }
+
+      .hero-left {
+        padding: 72px 56px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        background: var(--paper);
+        overflow: hidden;
+      }
+
+      .hero-floral-bg {
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        opacity: .07;
+        pointer-events: none
+      }
+
+      .hero-tag {
+        font-size: 9px;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: var(--rose);
+        font-weight: 500;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero-tag::after {
+        content: '';
+        flex: 1;
+        max-width: 40px;
+        height: 1px;
+        background: var(--rose-l)
+      }
+
+      .hero-h1 {
+        font-family: var(--fd);
+        font-size: 56px;
+        line-height: 1.05;
+        color: var(--ink);
+        margin-bottom: 24px;
+        position: relative;
+        z-index: 1
+      }
+
+      .hero-h1 em {
+        font-style: italic;
+        color: var(--rose)
+      }
+
+      .hero-body {
+        font-size: 13px;
+        color: var(--ink3);
+        line-height: 1.9;
+        margin-bottom: 36px;
+        max-width: 300px;
+        position: relative;
+        z-index: 1;
+        font-weight: 300
+      }
+
+      .hero-ctas {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+        position: relative;
+        z-index: 1
+      }
+
+      .btn-petal {
+        font-family: var(--fb);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--paper);
+        background: var(--ink);
+        border: none;
+        padding: 14px 32px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-petal svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--paper);
+        fill: none;
+        stroke-width: 1.5
+      }
+
+      .btn-ghost-petal {
+        font-family: var(--fb);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: var(--rose);
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--rose-l);
+        padding: 0 0 3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .hero-right {
+        position: relative;
+        overflow: hidden;
+        background: var(--paper2)
+      }
+
+      .hero-right img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover
+      }
+
+      /* ── BOTANICAL DIVIDER ── */
+      .div-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 28px 0;
+        background: var(--paper);
+        gap: 20px
+      }
+
+      .div-line {
+        flex: 1;
+        height: 1px;
+        background: var(--line)
+      }
+
+      .div-motif {
+        display: flex;
+        align-items: center;
+        gap: 12px
+      }
+
+      /* ── TRUST STRIP ── */
+      .trust {
+        background: var(--paper2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line)
+      }
+
+      .trust-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr)
+      }
+
+      .titem {
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-right: 1px solid var(--line)
+      }
+
+      .titem:last-child {
+        border-right: none
+      }
+
+      .titem svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--rose);
+        fill: none;
+        stroke-width: 1.2;
+        flex-shrink: 0
+      }
+
+      .titem-text strong {
+        display: block;
+        font-size: 11px;
+        color: var(--ink);
+        font-weight: 500;
+        letter-spacing: .2px
+      }
+
+      .titem-text span {
+        font-size: 10px;
+        color: var(--ink3);
+        font-weight: 300
+      }
+
+      /* ── SECTION SHARED ── */
+      .sec-label {
+        font-size: 9px;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: var(--rose);
+        font-weight: 500;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px
+      }
+
+      .sec-label::before {
+        content: '';
+        width: 16px;
+        height: 1px;
+        background: var(--rose-l)
+      }
+
+      .sec-title {
+        font-family: var(--fd);
+        font-size: 36px;
+        color: var(--ink);
+        line-height: 1.15
+      }
+
+      .sec-title em {
+        font-style: italic;
+        color: var(--rose)
+      }
+
+      /* ── FEATURED PRODUCT ── */
+      .feat {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--paper)
+      }
+
+      .feat-img {
+        overflow: hidden;
+        position: relative
+      }
+
+      .feat-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        min-height: 500px;
+        transition: transform .8s ease
+      }
+
+      .feat:hover .feat-img img {
+        transform: scale(1.03)
+      }
+
+      .feat-content {
+        padding: 72px 56px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--paper3)
+      }
+
+      .feat-number {
+        font-family: var(--fd);
+        font-size: 80px;
+        color: var(--line);
+        line-height: 1;
+        margin-bottom: -16px;
+        display: block
+      }
+
+      .feat-name {
+        font-family: var(--fd);
+        font-size: 32px;
+        color: var(--ink);
+        margin-bottom: 6px
+      }
+
+      .feat-scent {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        margin-bottom: 20px;
+        font-weight: 400
+      }
+
+      .feat-desc {
+        font-size: 13px;
+        color: var(--ink3);
+        line-height: 1.85;
+        margin-bottom: 32px;
+        font-weight: 300
+      }
+
+      .feat-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--line);
+        padding-top: 24px
+      }
+
+      .feat-price {
+        font-family: var(--fd);
+        font-size: 24px;
+        color: var(--ink)
+      }
+
+      .btn-add {
+        font-family: var(--fb);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--paper);
+        background: var(--ink);
+        border: none;
+        padding: 12px 24px;
+        cursor: pointer;
+      }
+
+      /* ── PRODUCT GRID ── */
+      .shop-sec {
+        padding: 64px 48px;
+        background: var(--paper)
+      }
+
+      .shop-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 44px;
+        flex-wrap: wrap;
+        gap: 12px
+      }
+
+      .view-link {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        text-decoration: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 2px;
+        font-weight: 400;
+        transition: color .2s, border-color .2s;
+      }
+
+      .view-link:hover {
+        color: var(--ink);
+        border-color: var(--ink3)
+      }
+
+      .pgrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px
+      }
+
+      .pcard {
+        background: var(--paper2);
+        overflow: hidden;
+        cursor: pointer;
+        position: relative
+      }
+
+      .pcard:hover .pcard-img img {
+        transform: scale(1.05)
+      }
+
+      .pcard-img {
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        position: relative
+      }
+
+      .pcard-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .6s ease
+      }
+
+      .pcard-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        font-size: 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        font-weight: 500
+      }
+
+      .badge-rose {
+        background: var(--rose);
+        color: white
+      }
+
+      .badge-ink {
+        background: var(--ink);
+        color: var(--paper)
+      }
+
+      .pcard-info {
+        padding: 18px 20px 20px;
+        border-top: 1px solid var(--line)
+      }
+
+      .pcard-name {
+        font-family: var(--fd);
+        font-size: 17px;
+        color: var(--ink);
+        margin-bottom: 3px
+      }
+
+      .pcard-note {
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        margin-bottom: 14px;
+        font-weight: 400
+      }
+
+      .pcard-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+      }
+
+      .pcard-price {
+        font-size: 14px;
+        color: var(--ink);
+        font-weight: 500
+      }
+
+      .pcard-add {
+        width: 28px;
+        height: 28px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        color: var(--ink);
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: all .2s;
+      }
+
+      .pcard-add:hover {
+        background: var(--ink);
+        color: var(--paper);
+        border-color: var(--ink)
+      }
+
+      /* ── STORY ── */
+      .story {
+        background: var(--paper2)
+      }
+
+      .story-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr
+      }
+
+      .story-img {
+        overflow: hidden;
+        position: relative;
+        min-height: 520px
+      }
+
+      .story-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block
+      }
+
+      .story-img-caption {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: var(--paper);
+        padding: 8px 14px;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        font-weight: 400
+      }
+
+      .story-content {
+        padding: 72px 56px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+      }
+
+      .story-pull {
+        font-family: var(--fd);
+        font-size: 24px;
+        font-style: italic;
+        color: var(--ink);
+        line-height: 1.5;
+        margin: 24px 0;
+        padding-left: 20px;
+        border-left: 2px solid var(--rose-l)
+      }
+
+      .story-body {
+        font-size: 13px;
+        color: var(--ink3);
+        line-height: 1.9;
+        margin-bottom: 28px;
+        font-weight: 300
+      }
+
+      .story-sig {
+        font-family: var(--fd);
+        font-size: 18px;
+        font-style: italic;
+        color: var(--rose);
+        margin-bottom: 24px
+      }
+
+      .story-link {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 2px;
+        font-weight: 400;
+        cursor: pointer;
+        background: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
+
+      /* ── INGREDIENTS ── */
+      .ingr {
+        padding: 72px 48px;
+        background: var(--paper)
+      }
+
+      .ingr-head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: end;
+        margin-bottom: 52px
+      }
+
+      .ingr-intro {
+        font-size: 13px;
+        color: var(--ink3);
+        line-height: 1.85;
+        font-weight: 300
+      }
+
+      .ingr-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--line)
+      }
+
+      .ingr-item {
+        padding: 28px 24px;
+        border-right: 1px solid var(--line);
+        position: relative;
+        overflow: hidden
+      }
+
+      .ingr-item:last-child {
+        border-right: none
+      }
+
+      .ingr-item::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--rose-l);
+        transform: scaleX(0);
+        transition: transform .3s;
+        transform-origin: left
+      }
+
+      .ingr-item:hover::before {
+        transform: scaleX(1)
+      }
+
+      .ingr-num {
+        font-family: var(--fd);
+        font-size: 32px;
+        color: var(--line);
+        margin-bottom: 8px;
+        line-height: 1
+      }
+
+      .ingr-name {
+        font-family: var(--fd);
+        font-size: 15px;
+        color: var(--ink);
+        margin-bottom: 6px;
+        font-style: italic
+      }
+
+      .ingr-desc {
+        font-size: 11px;
+        color: var(--ink3);
+        line-height: 1.65;
+        font-weight: 300
+      }
+
+      /* ── GALLERY ── */
+      .gallery {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 2px;
+        background: var(--paper3)
+      }
+
+      .gi {
+        overflow: hidden;
+        position: relative
+      }
+
+      .gi img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .7s ease;
+        min-height: 237px
+      }
+
+      .gi:hover img {
+        transform: scale(1.06)
+      }
+
+      .gi-main {
+        grid-column: 1;
+        grid-row: 1 / 3
+      }
+
+      .gi-main img {
+        min-height: 480px
+      }
+
+      .gi-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 14px 16px;
+        background: linear-gradient(transparent, rgba(28, 43, 30, .5));
+        opacity: 0;
+        transition: opacity .3s
+      }
+
+      .gi:hover .gi-caption {
+        opacity: 1
+      }
+
+      .gi-cap-text {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(250, 248, 244, .85);
+        font-family: var(--fb);
+        font-weight: 400
+      }
+
+      /* ── REVIEWS ── */
+      .rev {
+        background: var(--paper2);
+        padding: 72px 48px;
+        border-top: 1px solid var(--line)
+      }
+
+      .rev-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 44px
+      }
+
+      .rcard {
+        position: relative
+      }
+
+      .rcard::before {
+        content: '\201C';
+        font-family: var(--fd);
+        font-size: 64px;
+        color: var(--rose-l);
+        position: absolute;
+        top: -20px;
+        left: -8px;
+        line-height: 1
+      }
+
+      .rstar {
+        display: flex;
+        gap: 3px;
+        margin-bottom: 14px
+      }
+
+      .rstar svg {
+        width: 10px;
+        height: 10px
+      }
+
+      .rtxt {
+        font-family: var(--fd);
+        font-size: 15px;
+        font-style: italic;
+        color: var(--ink2);
+        line-height: 1.7;
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1
+      }
+
+      .rdiv {
+        width: 24px;
+        height: 1px;
+        background: var(--rose-l);
+        margin: 10px 0
+      }
+
+      .rname {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        font-weight: 400
+      }
+
+      /* ── EMAIL ── */
+      .email-sec {
+        display: grid;
+        grid-template-columns: 1fr 1fr
+      }
+
+      .email-img {
+        overflow: hidden;
+        position: relative
+      }
+
+      .email-img img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block
+      }
+
+      .email-img::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(28, 43, 30, .18)
+      }
+
+      .email-content {
+        background: var(--ink);
+        padding: 72px 56px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+      }
+
+      .email-tag {
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--rose-l);
+        margin-bottom: 18px;
+        font-weight: 400
+      }
+
+      .email-title {
+        font-family: var(--fd);
+        font-size: 40px;
+        color: var(--paper);
+        line-height: 1.1;
+        margin-bottom: 12px
+      }
+
+      .email-title em {
+        font-style: italic;
+        color: var(--rose-l)
+      }
+
+      .email-desc {
+        font-size: 12px;
+        color: rgba(250, 248, 244, .55);
+        line-height: 1.8;
+        margin-bottom: 32px;
+        font-weight: 300
+      }
+
+      .email-form {
+        border-bottom: 1px solid rgba(250, 248, 244, .2);
+        display: flex;
+        align-items: center;
+        margin-bottom: 14px
+      }
+
+      .email-inp {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--paper);
+        font-size: 13px;
+        font-family: var(--fb);
+        padding: 12px 0;
+        outline: none;
+        font-weight: 300
+      }
+
+      .email-inp::placeholder {
+        color: rgba(250, 248, 244, .3)
+      }
+
+      .email-submit {
+        background: transparent;
+        border: none;
+        color: var(--rose-l);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: var(--fb);
+        cursor: pointer;
+        padding: 12px 0 12px 16px;
+        white-space: nowrap;
+        font-weight: 500
+      }
+
+      .email-note {
+        font-size: 10px;
+        color: rgba(250, 248, 244, .3);
+        letter-spacing: .5px
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--paper);
+        border-top: 1px solid var(--line);
+        padding: 56px 48px 28px
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px
+      }
+
+      .footer-brand .brand-name {
+        font-family: var(--fd);
+        font-size: 20px;
+        color: var(--ink);
+        margin-bottom: 6px
+      }
+
+      .footer-brand .brand-tag {
+        font-size: 9px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        margin-bottom: 16px;
+        font-weight: 400
+      }
+
+      .footer-brand p {
+        font-size: 12px;
+        color: var(--ink3);
+        line-height: 1.75;
+        max-width: 220px;
+        font-weight: 300
+      }
+
+      .footer-col h4 {
+        font-size: 9px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        margin-bottom: 16px;
+        font-weight: 400
+      }
+
+      .footer-col a {
+        display: block;
+        font-size: 12px;
+        color: var(--ink3);
+        text-decoration: none;
+        margin-bottom: 9px;
+        font-weight: 300;
+        transition: color .2s
+      }
+
+      .footer-col a:hover {
+        color: var(--ink)
+      }
+
+      .footer-bot {
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px
+      }
+
+      .footer-copy {
+        font-size: 10px;
+        color: var(--ink3);
+        font-weight: 300
+      }
+
+      .footer-socs {
+        display: flex;
+        gap: 20px
+      }
+
+      .footer-soc {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--ink3);
+        text-decoration: none;
+        font-weight: 400;
+        transition: color .2s
+      }
+
+      .footer-soc:hover {
+        color: var(--ink)
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        .wrap {
+          padding: 0
+        }
+
+        .site {
+          border-radius: 0;
+          box-shadow: none
+        }
+
+        nav {
+          padding: 0 20px;
+          height: 58px
+        }
+
+        .nl,
+        .nav-btn {
+          display: none
+        }
+
+        .hamburger {
+          display: flex
+        }
+
+        .mob-menu {
+          top: 58px
+        }
+
+        .hero {
+          grid-template-columns: 1fr
+        }
+
+        .hero-left {
+          padding: 44px 24px 36px
+        }
+
+        .hero-h1 {
+          font-size: 40px
+        }
+
+        .hero-right {
+          min-height: 300px
+        }
+
+        .feat {
+          grid-template-columns: 1fr
+        }
+
+        .feat-img img {
+          min-height: 300px
+        }
+
+        .feat-content {
+          padding: 40px 24px
+        }
+
+        .feat-number {
+          font-size: 56px
+        }
+
+        .shop-sec {
+          padding: 44px 20px
+        }
+
+        .pgrid {
+          grid-template-columns: 1fr 1fr
+        }
+
+        .story-inner {
+          grid-template-columns: 1fr
+        }
+
+        .story-img {
+          min-height: 300px
+        }
+
+        .story-content {
+          padding: 40px 24px
+        }
+
+        .story-pull {
+          font-size: 20px
+        }
+
+        .ingr {
+          padding: 44px 20px
+        }
+
+        .ingr-head {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          margin-bottom: 32px
+        }
+
+        .ingr-list {
+          grid-template-columns: 1fr 1fr
+        }
+
+        .ingr-item {
+          border-bottom: 1px solid var(--line)
+        }
+
+        .ingr-item:nth-child(2n) {
+          border-right: none
+        }
+
+        .gallery {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto
+        }
+
+        .gi-main {
+          grid-column: 1 / 3;
+          grid-row: auto
+        }
+
+        .gi-main img {
+          min-height: 260px
+        }
+
+        .gi img {
+          min-height: 180px
+        }
+
+        .rev {
+          padding: 44px 20px
+        }
+
+        .rev-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+          margin-top: 32px
+        }
+
+        .email-sec {
+          grid-template-columns: 1fr
+        }
+
+        .email-img {
+          min-height: 240px
+        }
+
+        .email-content {
+          padding: 44px 24px
+        }
+
+        .email-title {
+          font-size: 32px
+        }
+
+        footer {
+          padding: 44px 20px 24px
+        }
+
+        .footer-top {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px
+        }
+
+        .footer-brand {
+          grid-column: 1 / 3
+        }
+
+        .trust-inner {
+          grid-template-columns: 1fr 1fr
+        }
+
+        .titem {
+          border-bottom: 1px solid var(--line)
+        }
+
+        .titem:nth-child(2n) {
+          border-right: none
+        }
+
+        .titem:nth-child(3),
+        .titem:nth-child(4) {
+          border-bottom: none
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-h1 {
+          font-size: 32px
+        }
+
+        .hero-body {
+          font-size: 12px
+        }
+
+        .pgrid {
+          grid-template-columns: 1fr
+        }
+
+        .ingr-list {
+          grid-template-columns: 1fr
+        }
+
+        .ingr-item {
+          border-right: none;
+          border-bottom: 1px solid var(--line)
+        }
+
+        .ingr-item:last-child {
+          border-bottom: none
+        }
+
+        .footer-top {
+          grid-template-columns: 1fr
+        }
+
+        .footer-brand {
+          grid-column: auto
+        }
+
+        .trust-inner {
+          grid-template-columns: 1fr
+        }
+
+        .titem {
+          border-right: none
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="site">
+
+        <!-- NAV -->
+        <nav>
+          <div class="logo">Blue Garden Soaps Inc</div>
+          <ul class="nl">
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Ingredients</a></li>
+            <li><a href="#">Gift Sets</a></li>
+          </ul>
+          <div class="na">
+            <div class="nav-cart">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 01-8 0" />
+              </svg>
+              <div class="nav-dot"></div>
+            </div>
+            <button class="nav-btn">Shop Now</button>
+            <div class="hamburger" onclick="this.closest('nav').querySelector('.mob-menu').classList.toggle('open')">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="mob-menu">
+            <a href="#">Shop</a>
+            <a href="#">Collections</a>
+            <a href="#">Our Story</a>
+            <a href="#">Ingredients</a>
+            <a href="#">Gift Sets</a>
+          </div>
+        </nav>
+
+        <!-- HERO -->
+        <div class="hero">
+          <div class="hero-left">
+            <svg class="hero-floral-bg" width="340" height="340" viewBox="0 0 340 340" fill="none">
+              <circle cx="170" cy="170" r="140" stroke="#1C2B1E" stroke-width=".6" />
+              <path d="M170 30 Q200 100 170 170 Q140 100 170 30Z" stroke="#1C2B1E" stroke-width=".5" fill="none" />
+              <path d="M310 170 Q240 200 170 170 Q240 140 310 170Z" stroke="#1C2B1E" stroke-width=".5" fill="none" />
+              <path d="M170 310 Q140 240 170 170 Q200 240 170 310Z" stroke="#1C2B1E" stroke-width=".5" fill="none" />
+              <path d="M30 170 Q100 140 170 170 Q100 200 30 170Z" stroke="#1C2B1E" stroke-width=".5" fill="none" />
+              <path d="M252 88 Q210 130 170 170 Q158 108 252 88Z" stroke="#6A9E7A" stroke-width=".4" fill="none" />
+              <path d="M252 252 Q210 210 170 170 Q232 158 252 252Z" stroke="#6A9E7A" stroke-width=".4" fill="none" />
+              <path d="M88 252 Q130 210 170 170 Q182 232 88 252Z" stroke="#6A9E7A" stroke-width=".4" fill="none" />
+              <path d="M88 88 Q130 130 170 170 Q108 182 88 88Z" stroke="#6A9E7A" stroke-width=".4" fill="none" />
+              <circle cx="170" cy="170" r="6" stroke="#1C2B1E" stroke-width=".8" fill="none" />
+              <circle cx="170" cy="30" r="3" fill="#6A9E7A" opacity=".4" />
+              <circle cx="310" cy="170" r="3" fill="#6A9E7A" opacity=".4" />
+              <circle cx="170" cy="310" r="3" fill="#6A9E7A" opacity=".4" />
+              <circle cx="30" cy="170" r="3" fill="#6A9E7A" opacity=".4" />
+            </svg>
+            <p class="hero-tag">Blue Gardens Soap</p>
+            <h1 class="hero-h1">Grown from<br>the <em>garden,</em><br>made by hand</h1>
+            <p class="hero-body">Small-batch botanical soap crafted in Ontario. Every ingredient chosen with care, every bar cured for six weeks.</p>
+            <div class="hero-ctas">
+              <button class="btn-petal">
+                Explore the collection
+                <svg viewBox="0 0 12 12">
+                  <path d="M2 6h8M7 3l3 3-3 3" />
+                </svg>
+              </button>
+              <button class="btn-ghost-petal">Our story →</button>
+            </div>
+          </div>
+          <div class="hero-right">
+            <img src="eucalyptus.png" alt="Lavender Patchouli soap bars">
+          </div>
+        </div>
+
+        <!-- DIVIDER 1 -->
+        <div class="div-wrap">
+          <div class="div-line"></div>
+          <div class="div-motif">
+            <svg width="180" height="40" viewBox="0 0 180 40" fill="none">
+              <path d="M60 20 Q65 10 72 14 Q68 20 72 26 Q65 30 60 20Z" stroke="#6A9E7A" stroke-width=".8" fill="none" />
+              <path d="M80 20 Q85 8 92 13 Q87 20 92 27 Q85 32 80 20Z" stroke="#6A9E7A" stroke-width=".8" fill="none" />
+              <path d="M100 20 Q105 10 112 14 Q108 20 112 26 Q105 30 100 20Z" stroke="#6A9E7A" stroke-width=".8" fill="none" />
+              <circle cx="90" cy="20" r="3" fill="none" stroke="#1C2B1E" stroke-width=".8" />
+              <path d="M55 18 Q58 12 62 15" stroke="#7A9080" stroke-width=".6" fill="none" />
+              <path d="M115 18 Q118 12 122 15" stroke="#7A9080" stroke-width=".6" fill="none" />
+              <path d="M70 24 Q67 30 63 27" stroke="#7A9080" stroke-width=".6" fill="none" />
+              <path d="M110 24 Q107 30 103 27" stroke="#7A9080" stroke-width=".6" fill="none" />
+            </svg>
+          </div>
+          <div class="div-line"></div>
+        </div>
+
+        <!-- TRUST -->
+        <div class="trust">
+          <div class="trust-inner">
+            <div class="titem">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2C6 8 4 12 4 15a8 8 0 0016 0c0-3-2-7-8-13z" />
+              </svg>
+              <div class="titem-text"><strong>100% Natural</strong><span>No synthetic ingredients</span></div>
+            </div>
+            <div class="titem">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+              </svg>
+              <div class="titem-text"><strong>Handmade in Ontario</strong><span>Small batch, slow cured</span></div>
+            </div>
+            <div class="titem">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 8h14l-1.5 9H6.5L5 8z" />
+                <path d="M3 5h18" />
+                <path d="M10 12v3M14 12v3" />
+              </svg>
+              <div class="titem-text"><strong>Free Shipping $45+</strong><span>Across Canada</span></div>
+            </div>
+            <div class="titem">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              <div class="titem-text"><strong>Plastic-Free</strong><span>Compostable packaging</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FEATURED PRODUCT -->
+        <div class="feat">
+          <div class="feat-img">
+            <img src="lavender.png" alt="Lavender Patchouli soap">
+          </div>
+          <div class="feat-content">
+            <span class="feat-number">01</span>
+            <div class="feat-name">Lavender Patchouli</div>
+            <div class="feat-scent">Lavender · Patchouli · Poppy Seed</div>
+            <p class="feat-desc">Our most loved bar. A grounding blend of lavender and patchouli, topped with black poppy seeds and a swirl of cream. Hand-poured in small batches and slow-cured for a rich, long-lasting lather.</p>
+            <div class="feat-footer">
+              <span class="feat-price">$10.00</span>
+              <button class="btn-add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIVIDER 2 -->
+        <div class="div-wrap" style="background:var(--paper2)">
+          <div class="div-line"></div>
+          <div class="div-motif">
+            <svg width="200" height="40" viewBox="0 0 200 40" fill="none">
+              <g transform="translate(60,20)">
+                <circle cx="0" cy="0" r="3" fill="none" stroke="#1C2B1E" stroke-width=".8" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(45)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(90)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(135)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(180)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(225)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(270)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(315)" />
+              </g>
+              <g transform="translate(100,20)">
+                <circle cx="0" cy="0" r="3" fill="none" stroke="#1C2B1E" stroke-width=".8" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" transform="rotate(45)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" transform="rotate(90)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" transform="rotate(135)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" transform="rotate(180)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" transform="rotate(225)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" transform="rotate(270)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#7A9080" stroke-width=".7" transform="rotate(315)" />
+              </g>
+              <g transform="translate(140,20)">
+                <circle cx="0" cy="0" r="3" fill="none" stroke="#1C2B1E" stroke-width=".8" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(45)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(90)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(135)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(180)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(225)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(270)" />
+                <ellipse cx="0" cy="-8" rx="2.5" ry="5" fill="none" stroke="#6A9E7A" stroke-width=".7" transform="rotate(315)" />
+              </g>
+            </svg>
+          </div>
+          <div class="div-line"></div>
+        </div>
+
+        <!-- SHOP GRID -->
+        <div class="shop-sec">
+          <div class="shop-head">
+            <div>
+              <p class="sec-label">The Collection</p>
+              <h2 class="sec-title">All <em>handmade</em> with care</h2>
+            </div>
+            <a class="view-link" href="#">View all products</a>
+          </div>
+          <div class="pgrid">
+
+            <div class="pcard">
+              <div class="pcard-img">
+                <span class="pcard-badge badge-rose">Bestseller</span>
+                <img src="eucalyptus.png" alt="Eucalyptus soap">
+              </div>
+              <div class="pcard-info">
+                <div class="pcard-name">Eucalyptus</div>
+                <div class="pcard-note">Fresh · Earthy · Clarifying</div>
+                <div class="pcard-foot"><span class="pcard-price">$10.00</span><button class="pcard-add">+</button></div>
+              </div>
+            </div>
+
+            <div class="pcard">
+              <div class="pcard-img">
+                <img src="oats.png" alt="Oats Milk and Honey soap">
+              </div>
+              <div class="pcard-info">
+                <div class="pcard-name">Oats Milk &amp; Honey</div>
+                <div class="pcard-note">Nourishing · Gentle · Warm</div>
+                <div class="pcard-foot"><span class="pcard-price">$10.00</span><button class="pcard-add">+</button></div>
+              </div>
+            </div>
+
+            <div class="pcard">
+              <div class="pcard-img">
+                <img src="rosemary .png" alt="Rosemary Mint soap">
+              </div>
+              <div class="pcard-info">
+                <div class="pcard-name">Rosemary Mint</div>
+                <div class="pcard-note">Herbal · Invigorating · Clean</div>
+                <div class="pcard-foot"><span class="pcard-price">$10.00</span><button class="pcard-add">+</button></div>
+              </div>
+            </div>
+
+            <div class="pcard">
+              <div class="pcard-img">
+                <img src="white .png" alt="Garden White soap">
+              </div>
+              <div class="pcard-info">
+                <div class="pcard-name">Garden White</div>
+                <div class="pcard-note">Floral · Clean · Gentle</div>
+                <div class="pcard-foot"><span class="pcard-price">$10.00</span><button class="pcard-add">+</button></div>
+              </div>
+            </div>
+
+            <div class="pcard">
+              <div class="pcard-img">
+                <span class="pcard-badge badge-ink">New</span>
+                <img src="orange.png" alt="Orange Blossom soap">
+              </div>
+              <div class="pcard-info">
+                <div class="pcard-name">Orange Blossom</div>
+                <div class="pcard-note">Bright · Citrus · Uplifting</div>
+                <div class="pcard-foot"><span class="pcard-price">$10.00</span><button class="pcard-add">+</button></div>
+              </div>
+            </div>
+
+            <div class="pcard">
+              <div class="pcard-img">
+                <img src="brown .png" alt="Charcoal Turmeric soap">
+              </div>
+              <div class="pcard-info">
+                <div class="pcard-name">Charcoal &amp; Turmeric</div>
+                <div class="pcard-note">Detox · Clarifying · Bold</div>
+                <div class="pcard-foot"><span class="pcard-price">$10.00</span><button class="pcard-add">+</button></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- DIVIDER 3 -->
+        <div class="div-wrap">
+          <div class="div-line"></div>
+          <div class="div-motif">
+            <svg width="160" height="44" viewBox="0 0 160 44" fill="none">
+              <path d="M10 22 Q80 22 150 22" stroke="#DDD8CE" stroke-width="1" />
+              <path d="M80 4 Q80 22 80 40" stroke="#7A9080" stroke-width=".8" />
+              <path d="M80 14 Q70 8 65 10" stroke="#7A9080" stroke-width=".7" />
+              <path d="M80 18 Q90 11 96 13" stroke="#7A9080" stroke-width=".7" />
+              <path d="M80 26 Q70 33 66 31" stroke="#7A9080" stroke-width=".7" />
+              <path d="M80 30 Q90 37 95 35" stroke="#7A9080" stroke-width=".7" />
+              <ellipse cx="80" cy="4" rx="5" ry="7" fill="none" stroke="#6A9E7A" stroke-width=".8" />
+              <path d="M75 4 Q80 0 85 4" stroke="#6A9E7A" stroke-width=".6" fill="none" />
+              <circle cx="65" cy="9" r="3.5" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+              <circle cx="96" cy="12" r="3.5" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+              <circle cx="66" cy="31" r="3.5" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+              <circle cx="95" cy="35" r="3.5" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+            </svg>
+          </div>
+          <div class="div-line"></div>
+        </div>
+
+        <!-- STORY -->
+        <div class="story">
+          <div class="story-inner">
+            <div class="story-img">
+              <img src="yellow.png" alt="Handmade soap collection">
+              <div class="story-img-caption">Ontario, Canada</div>
+            </div>
+            <div class="story-content">
+              <p class="sec-label">Our Story</p>
+              <h2 class="sec-title">From the <em>garden</em><br>to your skin</h2>
+              <blockquote class="story-pull">"I couldn't read the ingredients, and my skin was paying for it. So I made something I could actually trust."</blockquote>
+              <p class="story-body">Samisha started Blue Gardens after years of buying soap she couldn't understand, made with things that left her skin worse off. She went back to basics: Shea Butter, Olive Oil, Honey, Oats — ingredients you recognise, in bars slow-cured for six weeks. No fillers. No guesswork.</p>
+              <p class="story-sig">— Samisha, Owner</p>
+              <button class="story-link">Read the full story</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INGREDIENTS -->
+        <div class="ingr">
+          <div class="ingr-head">
+            <div>
+              <p class="sec-label">What's Inside</p>
+              <h2 class="sec-title">Ingredients you can<br><em>actually pronounce</em></h2>
+            </div>
+            <p class="ingr-intro">We use only what the skin actually needs. No filler, no fragrance oil, no synthetic colour. Every bar is a short, honest list — nothing hidden, nothing unnecessary.</p>
+          </div>
+          <div class="ingr-list">
+            <div class="ingr-item">
+              <div class="ingr-num">01</div>
+              <div class="ingr-name">Calendula</div>
+              <div class="ingr-desc">Garden-grown each summer. Soothing and anti-inflammatory for sensitive and reactive skin.</div>
+            </div>
+            <div class="ingr-item">
+              <div class="ingr-num">02</div>
+              <div class="ingr-name">Olive Oil</div>
+              <div class="ingr-desc">Cold-pressed, food-grade. Creates a conditioning lather that never strips skin.</div>
+            </div>
+            <div class="ingr-item">
+              <div class="ingr-num">03</div>
+              <div class="ingr-name">Shea Butter</div>
+              <div class="ingr-desc">Unrefined and raw. Deep moisture that absorbs cleanly without residue.</div>
+            </div>
+            <div class="ingr-item">
+              <div class="ingr-num">04</div>
+              <div class="ingr-name">Essential Oils</div>
+              <div class="ingr-desc">Pure only. No synthetic fragrance, no parfum. What you smell is real.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GALLERY -->
+        <div class="gallery">
+          <div class="gi gi-main">
+            <img src="milk.png" alt="Oats Milk and Honey collection">
+            <div class="gi-caption"><span class="gi-cap-text">Botanical Blend</span></div>
+          </div>
+          <div class="gi">
+            <img src="charcoal.png" alt="Charcoal Turmeric soap">
+            <div class="gi-caption"><span class="gi-cap-text">Charcoal &amp; Turmeric</span></div>
+          </div>
+          <div class="gi">
+            <img src="eucalyptus.png" alt="Eucalyptus soap">
+            <div class="gi-caption"><span class="gi-cap-text">Eucalyptus</span></div>
+          </div>
+          <div class="gi">
+            <img src="rosemary .png" alt="Rosemary Mint soap">
+            <div class="gi-caption"><span class="gi-cap-text">Rosemary Mint</span></div>
+          </div>
+          <div class="gi">
+            <img src="white .png" alt="Garden White soap">
+            <div class="gi-caption"><span class="gi-cap-text">Garden White</span></div>
+          </div>
+        </div>
+
+        <!-- DIVIDER 4 -->
+        <div class="div-wrap" style="background:var(--paper2)">
+          <div class="div-line"></div>
+          <div class="div-motif">
+            <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+              <path d="M10 20 Q60 20 110 20" stroke="#DDD8CE" stroke-width="1" />
+              <path d="M35 20 Q45 8 60 6 Q75 8 85 20" stroke="#7A9080" stroke-width=".8" fill="none" />
+              <circle cx="60" cy="6" r="4" fill="none" stroke="#6A9E7A" stroke-width=".8" />
+              <path d="M56 6 Q60 2 64 6" stroke="#6A9E7A" stroke-width=".6" fill="none" />
+              <circle cx="36" cy="19" r="3" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+              <circle cx="84" cy="19" r="3" fill="none" stroke="#6A9E7A" stroke-width=".7" />
+              <path d="M42 13 Q44 9 47 11" stroke="#7A9080" stroke-width=".6" fill="none" />
+              <path d="M73 11 Q76 9 78 13" stroke="#7A9080" stroke-width=".6" fill="none" />
+            </svg>
+          </div>
+          <div class="div-line"></div>
+        </div>
+
+        <!-- REVIEWS -->
+        <div class="rev">
+          <p class="sec-label">Customer Stories</p>
+          <h2 class="sec-title">Kind words from our <em>community</em></h2>
+          <div class="rev-grid">
+            <div class="rcard">
+              <div class="rstar">
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+              </div>
+              <p class="rtxt">"My skin has never felt better. Bought three bars and my whole family is completely hooked."</p>
+              <div class="rdiv"></div>
+              <span class="rname">Michelle T. — Toronto</span>
+            </div>
+            <div class="rcard">
+              <div class="rstar">
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+              </div>
+              <p class="rtxt">"I have eczema and this is the real deal. Rich, genuinely gentle, and it lasts a very long time."</p>
+              <div class="rdiv"></div>
+              <span class="rname">Priya K. — Ottawa</span>
+            </div>
+            <div class="rcard">
+              <div class="rstar">
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+                <svg viewBox="0 0 9 9" fill="#6A9E7A">
+                  <polygon points="4.5,0.5 5.5,3.3 8.5,3.6 6.3,5.6 7,8.5 4.5,7.1 2,8.5 2.7,5.6 0.5,3.6 3.5,3.3" />
+                </svg>
+              </div>
+              <p class="rtxt">"Bought a gift set for my mother and she asked me to order more before I'd even left."</p>
+              <div class="rdiv"></div>
+              <span class="rname">Jamie R. — Hamilton</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="email-sec">
+          <div class="email-img">
+            <img src="orange.png" alt="Orange Blossom soap">
+          </div>
+          <div class="email-content">
+            <p class="email-tag">Join the garden</p>
+            <h2 class="email-title">Stay close<br>to the <em>source</em></h2>
+            <p class="email-desc">New batches sell out fast. Members get early access to seasonal drops, behind-the-scenes updates, and 10% off their first order.</p>
+            <div class="email-form">
+              <input class="email-inp" type="email" placeholder="your@email.com">
+              <button class="email-submit">Subscribe →</button>
+            </div>
+            <p class="email-note">2–3 emails per month · No spam · Unsubscribe anytime</p>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="brand-name">Blue Garden Soaps Inc</div>
+              <div class="brand-tag">Small Batch · Botanical · Ontario</div>
+              <p>Handmade botanical soap crafted from our garden. Every bar slow-cured, every ingredient chosen with intention.</p>
+            </div>
+            <div class="footer-col">
+              <h4>Shop</h4>
+              <a href="#">All Soaps</a><a href="#">Gift Sets</a><a href="#">Bundles</a><a href="#">Seasonal</a>
+            </div>
+            <div class="footer-col">
+              <h4>Help</h4>
+              <a href="#">Shipping</a><a href="#">Returns</a><a href="#">FAQ</a><a href="#">Contact</a>
+            </div>
+            <div class="footer-col">
+              <h4>About</h4>
+              <a href="#">Our Story</a><a href="#">Ingredients</a><a href="#">Wholesale</a><a href="#">Press</a>
+            </div>
+          </div>
+          <div class="footer-bot">
+            <span class="footer-copy">© 2024 Blue Garden Soaps Inc· Ontario, Canada</span>
+            <div class="footer-socs">
+              <a class="footer-soc" href="#">Instagram</a>
+              <a class="footer-soc" href="#">Facebook</a>
+              <a class="footer-soc" href="#">Pinterest</a>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </body>
+
+</html>
